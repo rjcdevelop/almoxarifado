@@ -3,21 +3,223 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Sistema Controle de Produção</title>
+	<title>Sistema Controle de Produção - RJC Defesa</title>
 	<link href="css/estilo.css" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: #f8fbff;
+			color: #0b1d3f;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 900px;
+			background: rgba(255, 255, 255, 0.95);
+			border-radius: 15px;
+			box-shadow: 0 20px 40px rgba(11, 29, 63, 0.12), 
+					inset 0 1px 0 rgba(255, 255, 255, 0.6);
+			padding: 60px 40px;
+			border: 1px solid rgba(11, 29, 63, 0.2);
+			backdrop-filter: blur(10px);
+			text-align: center;
+		}
+
+		.logo-section {
+			margin-bottom: 40px;
+			padding-bottom: 30px;
+			border-bottom: 2px solid rgba(11, 29, 63, 0.2);
+		}
+
+		.company-name {
+			font-size: 2em;
+			font-weight: 700;
+			color: #0b1d3f;
+			letter-spacing: 2px;
+			text-shadow: 0 4px 10px rgba(11, 29, 63, 0.15);
+			margin-bottom: 10px;
+		}
+
+		.company-subtitle {
+			font-size: 1.1em;
+			color: rgba(11, 29, 63, 0.75);
+			letter-spacing: 1px;
+			font-weight: 300;
+		}
+
+		.system-title {
+			font-size: 1.5em;
+			color: #0b1d3f;
+			margin-top: 20px;
+			font-weight: 600;
+		}
+
+		.modules-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 25px;
+			margin-top: 50px;
+		}
+
+		.module-card {
+			position: relative;
+			overflow: hidden;
+			border-radius: 12px;
+			background: rgba(255, 255, 255, 0.85);
+			border: 1.5px solid rgba(11, 29, 63, 0.2);
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			box-shadow: 0 10px 30px rgba(11, 29, 63, 0.12);
+		}
+
+		.module-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(11, 29, 63, 0.1), transparent);
+			transition: left 0.5s ease;
+		}
+
+		.module-card:hover::before {
+			left: 100%;
+		}
+
+		.module-card:hover {
+			transform: translateY(-8px) scale(1.02);
+			border-color: rgba(11, 29, 63, 0.4);
+			box-shadow: 0 20px 50px rgba(11, 29, 63, 0.2), 
+					0 0 30px rgba(11, 29, 63, 0.12);
+		}
+
+		.module-button {
+			display: block;
+			width: 100%;
+			padding: 20px;
+			background: linear-gradient(135deg, rgba(11, 29, 63, 0.95) 0%, rgba(15, 52, 96, 0.85) 100%);
+			border: none;
+			color: #ffffff;
+			font-size: 1.2em;
+			font-weight: 600;
+			letter-spacing: 1px;
+			cursor: pointer;
+			text-decoration: none;
+			text-transform: uppercase;
+			transition: all 0.3s ease;
+			border-radius: 10px;
+			text-align: center;
+		}
+
+		.module-button:hover {
+			background: linear-gradient(135deg, rgba(11, 29, 63, 0.9) 0%, rgba(15, 52, 96, 0.9) 100%);
+			color: #ffffff;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+		}
+
+		.module-button:active {
+			transform: scale(0.98);
+		}
+
+		.module-icon {
+			font-size: 2.5em;
+			margin-bottom: 10px;
+			opacity: 0.8;
+			transition: all 0.3s ease;
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.module-card:hover .module-icon {
+			opacity: 1;
+			transform: scale(1.1);
+		}
+
+		.footer-info {
+			margin-top: 50px;
+			padding-top: 30px;
+			border-top: 1px solid rgba(11, 29, 63, 0.2);
+			font-size: 0.85em;
+			color: rgba(11, 29, 63, 0.7);
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				padding: 40px 25px;
+			}
+
+			.company-name {
+				font-size: 1.5em;
+			}
+
+			.modules-grid {
+				grid-template-columns: 1fr;
+				gap: 15px;
+			}
+
+			.system-title {
+				font-size: 1.2em;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.container {
+				padding: 30px 15px;
+			}
+
+			.company-name {
+				font-size: 1.2em;
+			}
+
+			.company-subtitle {
+				font-size: 0.9em;
+			}
+
+			.module-button {
+				font-size: 1em;
+				padding: 15px;
+			}
+		}
+	</style>
 </head>
 
 <body>
-	
+	<div class="container">
+		<div class="logo-section">
+			<div class="company-name">⚙ R J C DEFESA E AEROESPACIAL</div>
+			<div class="company-subtitle">Tecnologia, Precisão e Excelência</div>
+			<div class="system-title">Sistema de Controle, Produção e Estoque</div>
+		</div>
 
-<?php
+		<div class="modules-grid">
+			<?php
+				echo '<div class="module-card">';
+				echo '<a href="almoxarifado" class="module-button">📦 Almoxarifado</a>';
+				echo '</div>';
 
-echo 'R J C DEFESA E AEROESPACIAL LTDA<br> Sistema de Controle, Produção e Estoque - RJC<br><br><br>';
-//echo "<a href='rjc'><button>Sistema PCP</button></a><br><br>";
-echo "<a href='almoxarifado'><button>Almoxarifado</button></a><br><br>";
-echo "<a href='compras'><button>Compras</button></a><br><br>";
+				echo '<div class="module-card">';
+				echo '<a href="compras" class="module-button">🛒 Compras</a>';
+				echo '</div>';
 
-?>
+				echo '<div class="module-card">';
+				echo '<a href="auditoria" class="module-button">🔍 Auditoria</a>';
+				echo '</div>';
+			?>
+		</div>
 
+		<div class="footer-info">
+			<p>Acesso restrito • Controle de Operações Críticas</p>
+		</div>
+	</div>
 </body>
 </html>

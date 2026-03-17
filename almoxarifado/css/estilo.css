@@ -3,7 +3,7 @@
 	border-collapse: collapse;
 }
 #tbordprod td{
-	border: 1px solid black;
+	border: 1px solid rgba(11, 29, 63, 0.5);
 }
 .tdright {
 	text-align: right;
@@ -14,9 +14,9 @@
 	border-collapse: collapse;
 }
 #tbordzebr td{
-	border: 1px solid black;
+	border: 1px solid rgba(11, 29, 63, 0.5);
 }
 #tbordzebr tbody tr:nth-child(2n+1){
 	/*background: #ccc;*/
-	background: #dcdcdc;
+	background: rgba(248, 251, 255, 0.8);
 	}

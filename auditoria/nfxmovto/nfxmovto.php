@@ -5,14 +5,227 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Movimento Estoque</title>
 	<link href="../css/estilo.css" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: #f8fbff;
+			color: #0b1d3f;
+			min-height: 100vh;
+			padding: 20px;
+		}
+
+		.main-container {
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+
+		.header {
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 248, 255, 0.95) 100%);
+			border-radius: 20px;
+			padding: 40px;
+			margin-bottom: 40px;
+			border: 1px solid rgba(11, 29, 63, 0.15);
+			box-shadow: 0 15px 35px rgba(11, 29, 63, 0.08), 0 5px 15px rgba(11, 29, 63, 0.05);
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 25px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.header::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(45deg, transparent 30%, rgba(11, 29, 63, 0.02) 50%, transparent 70%);
+			pointer-events: none;
+		}
+
+		.logo {
+			width: 120px;
+			height: auto;
+			filter: drop-shadow(0 4px 8px rgba(11, 29, 63, 0.1));
+			transition: transform 0.3s ease;
+		}
+
+		.logo:hover {
+			transform: scale(1.05);
+		}
+
+		.company-name {
+			background: linear-gradient(45deg, #0b1d3f, #1e3a5f);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			font-size: 2.2em;
+			font-weight: 800;
+			letter-spacing: 3px;
+			margin-bottom: 15px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.page-title {
+			font-size: 1.1em;
+			color: rgba(11, 29, 63, 0.7);
+			letter-spacing: 1.5px;
+			font-weight: 500;
+			position: relative;
+			z-index: 1;
+		}
+
+		.header-text {
+			flex: 1;
+			text-align: left;
+		}
+
+		.back-button {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			padding: 10px 18px;
+			background: rgba(11, 29, 63, 0.15);
+			border: 1px solid rgba(11, 29, 63, 0.3);
+			color: #0b1d3f;
+			border-radius: 8px;
+			cursor: pointer;
+			text-decoration: none;
+			font-size: 0.9em;
+			transition: all 0.3s ease;
+		}
+
+		.back-button:hover {
+			background: rgba(11, 29, 63, 0.25);
+			border-color: rgba(11, 29, 63, 0.4);
+		}
+
+		.search-form {
+			display: flex;
+			gap: 20px;
+			align-items: end;
+			margin-bottom: 30px;
+			flex-wrap: wrap;
+			padding: 20px;
+			background: rgba(255, 255, 255, 0.9);
+			border-radius: 12px;
+			border: 1px solid rgba(11, 29, 63, 0.2);
+			box-shadow: 0 4px 12px rgba(11, 29, 63, 0.1);
+		}
+
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.search-form label {
+			font-weight: 600;
+			color: #0b1d3f;
+			font-size: 0.9em;
+			letter-spacing: 0.5px;
+		}
+
+		.search-form input[type="date"] {
+			padding: 10px 12px;
+			border: 1px solid rgba(11, 29, 63, 0.3);
+			border-radius: 8px;
+			font-size: 14px;
+			background: #fff;
+			transition: all 0.3s ease;
+			min-width: 150px;
+		}
+
+		.search-form input[type="date"]:focus {
+			outline: none;
+			border-color: #0b1d3f;
+			box-shadow: 0 0 0 3px rgba(11, 29, 63, 0.1);
+		}
+
+		.search-form button[type="submit"] {
+			padding: 10px 24px;
+			background: linear-gradient(135deg, #0b1d3f, #1e3a5f);
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			font-size: 14px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.search-form button[type="submit"]:hover {
+			background: linear-gradient(135deg, #1e3a5f, #0b1d3f);
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(11, 29, 63, 0.3);
+		}
+
+		@media (max-width: 768px) {
+			.header {
+				padding: 30px 20px;
+				flex-direction: column;
+				text-align: center;
+				gap: 15px;
+			}
+
+			.logo {
+				width: 80px;
+				margin-bottom: 0;
+			}
+
+			.company-name {
+				font-size: 1.5em;
+			}
+
+			.page-title {
+				font-size: 1em;
+			}
+
+			.header-text {
+				text-align: center;
+			}
+
+			.search-form {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 15px;
+			}
+
+			.search-form input[type="date"] {
+				min-width: auto;
+			}
+		}
+	</style>
 </head>
 
 <body>
+	<a href="../index.php" class="back-button">← Voltar</a>
+
+	<div class="main-container">
+		<div class="header">
+			<img src="../img/rjclogo01.png" alt="Logo RJC" class="logo">
+			<div class="header-text">
+				<div class="company-name">R J C DEFESA E AEROESPACIAL</div>
+				<div class="page-title">Nota Fiscal x Movimento</div>
+			</div>
+		</div>
+
 <div style="font-size: small">
 <?php
 	$hoje = date('d/m/Y');
 	echo "RELATÓRIO DE ANÁLISE PRODUTOS - NOTAS SAÍDAS X MOVIMENTAÇÃO ESTOQUE<br>Emissão: ".$hoje."<br><br>";
-	echo "<a href='../index.php'><button>Voltar</button></a>&nbsp &nbsp &nbsp <br><br>";
+	// removed back button
 	
 	include_once "../../conexao.php";
 
@@ -29,16 +242,16 @@ if(isset($_GET['dt_ini'])){
 		}
 
 
-echo"<form action='nfxmovto.php' method='GET'>
-<table>
-<tr>
-<td><label>Data Inicial: </label></td>
-<td><input type='date' style='font-size: 10pt; height: 16px; width:150px;' value='$id_dtini' name='dt_ini'/></td>
-<td><label>Data Final: </label></td>
-<td><input type='date' style='font-size: 10pt; height: 16px; width:150px;' value='$id_dtfim' name='dt_fim'/></td>
-<td><input type='submit' value='Buscar'></td>
-</tr>
-</table>
+echo "<form action='nfxmovto.php' method='GET' class='search-form'>
+<div class='form-group'>
+<label>Data Inicial:</label>
+<input type='date' value='$id_dtini' name='dt_ini'>
+</div>
+<div class='form-group'>
+<label>Data Final:</label>
+<input type='date' value='$id_dtfim' name='dt_fim'>
+</div>
+<button type='submit'>Buscar</button>
 </form>
 <br><br>";
 
@@ -132,6 +345,7 @@ try{
 }
 
 ?>
+</div>
 </div>
 </body>
 </html>
