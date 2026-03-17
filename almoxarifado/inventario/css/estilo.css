@@ -1,26 +1,3 @@
-
-#tbordprod{
-	border-collapse: collapse;
-}
-#tbordprod td{
-	border: 1px solid black;
-}
-.tdright {
-	text-align: right;
-}
-
-
-#tbordzebr{
-	border-collapse: collapse;
-}
-#tbordzebr td{
-	border: 1px solid black;
-}
-#tbordzebr tbody tr:nth-child(2n+1){
-	/*background: #ccc;*/
-	background: #dcdcdc;
-	}
-
 * {
 	margin: 0;
 	padding: 0;

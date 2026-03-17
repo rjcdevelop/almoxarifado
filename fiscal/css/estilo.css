@@ -33,3 +33,22 @@
 .larg2 {
   width: 400px;
 }
+
+button, input[type="button"], input[type="submit"] {
+	padding: 8px 16px;
+	background: rgba(11, 29, 63, 0.15);
+	border: 1px solid rgba(11, 29, 63, 0.3);
+	color: #0b1d3f;
+	border-radius: 8px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	display: inline-block;
+	text-align: center;
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+	background: rgba(11, 29, 63, 0.25);
+	border-color: rgba(11, 29, 63, 0.4);
+}

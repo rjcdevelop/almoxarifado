@@ -3,7 +3,6 @@
 
 <head>
 <title>Inventário</title>
-<link href="../css/estilo.css" rel="stylesheet">
 </head>
 
 <body>

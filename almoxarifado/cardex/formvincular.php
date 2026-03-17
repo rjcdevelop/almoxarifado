@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>Vincular Lote</title>
-<link href="../css/estilo.css" rel="stylesheet">
 <script>function alert_alterado(){
 alert("Gravado com Sucesso!");
 history.go(-2);

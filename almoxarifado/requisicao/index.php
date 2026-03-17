@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Requisições</title>
-	<link href="../css/estilo.css" rel="stylesheet">
 </head>
 
 <body>
@@ -43,9 +42,9 @@ echo "<form action='index.php' method='POST'>
 <table>
 <tr>
 <td><label>Data Inicial: </label></td>
-<td><input type='date' style='font-size: 10pt; height: 16px; width:150px;' value=$id_dtini name='dt_ini'/></td>
+<td><input type='date' class='input-date' value='$id_dtini' name='dt_ini'/></td>
 <td><label>Data Final: </label></td>
-<td><input type='date' style='font-size: 10pt; height: 16px; width:150px;' value=$id_dtfim name='dt_fim'/></td>
+<td><input type='date' class='input-date' value='$id_dtfim' name='dt_fim'/></td>
 <td>Selecione:</td>	<td>
 <input type='radio' name='sequencia' value='Remessa' checked>Remessa
 <input type='radio' name='sequencia' value='Entrega'>Entrega</td>
