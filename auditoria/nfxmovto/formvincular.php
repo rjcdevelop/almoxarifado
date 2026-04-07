@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><title>Vincular Ordem de Produção" type=""></object></title>
-<link href="../css/estilo.css" rel="stylesheet">
+<link href="/css/estilo.css" rel="stylesheet">
 <script>function alert_alterado(){
 alert("Gravado com Sucesso!");
 history.go(-2);

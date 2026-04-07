@@ -3,7 +3,7 @@
 
 <head>
 <title>O.F. e Lotes - RJC</title>
-<link href="css/estilo.css" rel="stylesheet">
+<link href="/css/estilo.css" rel="stylesheet">
 </head>
 
 <body>

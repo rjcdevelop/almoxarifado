@@ -3,7 +3,7 @@
 
 <head>
 <title>Almoxarifado</title>
-<link href="css/estilo.css" rel="stylesheet">
+<link href="../../css/estilo.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,7 +64,7 @@ try{
 			<td>DESCRIÇÃO</td>
 			<td>UNID</td>
 			<td>SALDO</td>
-			<td>CARDEX</td>
+			<td>KARDEX</td>
 		</tr>";
 
 	while

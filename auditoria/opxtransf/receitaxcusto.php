@@ -3,7 +3,7 @@
 
 <head>
 <title>Receita x Custo</title>
-<link href="../css/estilo.css" rel="stylesheet">
+<link href="/css/estilo.css" rel="stylesheet">
 </head>
 
 <body>

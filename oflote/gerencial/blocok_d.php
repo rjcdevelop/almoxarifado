@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Bloco K - Período</title>
-<link href="../css/estilo.css" rel="stylesheet">
+<link href="/css/estilo.css" rel="stylesheet">
 </head>
 <body>
 <?php

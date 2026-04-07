@@ -3,7 +3,7 @@
 
 <head>
 <title>Lista de Requisições</title>
-<link href="../css/estilo.css" rel="stylesheet">
+<link href="../../css/estilo.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,15 +64,24 @@ if($rotina == "REQ"){
 	<input type='radio' name='rotina' value='DEV' checked>Entrega</td>";
 }
 
+$checked_vinc = "";
+$checked_todos = "";
+$checked_lote = "";
 if($filtro == "Vincular"){
-	echo "<br><td>Pendentes: (**Filtro em desenvolvimento) 	<input type='radio' name='filtro' value='Vincular' checked>Pendentes</td>
-															<input type='radio' name='filtro' value='todos'>Todos</td>";
+	$checked_vinc = "checked";
+}elseif($filtro == "todos"){
+	$checked_todos = "checked";
+}elseif($filtro == "lote"){
+	$checked_lote = "checked";
 }else{
-	echo "<br><td>Pendentes: (**Filtro em desenvolvimento) 	<input type='radio' name='filtro' value='Vincular'>Pendentes</td>
-															<input type='radio' name='filtro' value='todos' checked>Todos</td>";
+	$checked_vinc = "checked"; // default
 }
 
-echo "<table><tr><td><label>Pesquisar Registro: </label></td>
+echo "<br><td>Pendentes:  								 	<input type='radio' name='filtro' value='Vincular' $checked_vinc>Pendentes</td>
+															<input type='radio' name='filtro' value='todos' $checked_todos>Todos</td>
+															<input type='radio' name='filtro' value='lote' $checked_lote>Lote</td>";
+
+echo "<table id=tbordprod><tr><td><label>Pesquisar Registro: </label></td>
 <td><input type='text' style='font-size: 10pt; height: 16px; width:300px;' value='$busca' name='busca'/></td>
 <td><input type='submit' value='Buscar'></td>
 </tr></table>
@@ -114,7 +123,7 @@ try{
 		ORDER BY A.DATA DESC,A.CONTROLE,A.ITEM
 	");
 
-	}else{
+	}elseif ($filtro == 'todos'){
 		$consulta = $conectar->query("SELECT
 		CONVERT(varchar(10),A.DATA,103) AS 'DATA',
 		A.CONTROLE AS CONTROLE,
@@ -136,9 +145,54 @@ try{
 		AND $where1 LIKE '%$busca%'
 		ORDER BY A.DATA DESC,A.CONTROLE,A.ITEM
 	");
+	}elseif ($filtro == 'lote'){
+		$consulta = $conectar->query("SELECT
+		CONVERT(varchar(10),A.DATA,103) AS 'DATA',
+		A.CONTROLE AS CONTROLE,
+		A.ITEM AS ITEM,
+		A.PROD AS PROD,
+		A.DESCRICAO AS DESCRICAO,
+		A.QUANT AS QUANT,
+		CASE WHEN B.valuni IS NULL THEN A.VALUNI ELSE B.valuni END AS VALUNI,
+		CASE WHEN B.valtot IS NULL THEN A.VALTOT ELSE B.valtot END AS VALTOT,
+		CASE WHEN A.CONTROLE=B.doc_id THEN B.cod_lote ELSE 'Vincular' END AS 'CODLOTE',
+		$obsjoin
+		FROM
+		FAT00001.dbo.movto AS A
+		LEFT JOIN pcp_producao.dbo.reglote AS B ON A.CONTROLE=B.doc_id AND A.PROD=B.codproduto AND A.ITEM = B.item
+		$leftjoin
+		WHERE
+		A.ROTINA = '$rotina'
+		AND B.cod_lote LIKE '%$busca%'
+		ORDER BY A.DATA DESC,A.CONTROLE,A.ITEM
+	");
+	}else{
+		// default to Vincular
+		$consulta = $conectar->query("SELECT
+		CONVERT(varchar(10),A.DATA,103) AS 'DATA',
+		A.CONTROLE AS CONTROLE,
+		A.ITEM AS ITEM,
+		A.PROD AS PROD,
+		A.DESCRICAO AS DESCRICAO,
+		A.QUANT AS QUANT,
+		CASE WHEN B.valuni IS NULL THEN A.VALUNI ELSE B.valuni END AS VALUNI,
+		CASE WHEN B.valtot IS NULL THEN A.VALTOT ELSE B.valtot END AS VALTOT,
+		CASE WHEN A.CONTROLE=B.doc_id THEN B.cod_lote ELSE 'Vincular' END AS 'CODLOTE',
+		$obsjoin
+		FROM
+		FAT00001.dbo.movto AS A
+		LEFT JOIN pcp_producao.dbo.reglote AS B ON A.CONTROLE=B.doc_id AND A.PROD=B.codproduto AND A.ITEM = B.item
+		$leftjoin
+		WHERE
+		A.DATA >= '$id_dtini' AND A.DATA <= '$id_dtfim'
+		AND A.ROTINA = '$rotina'
+		AND $where1 LIKE '%$busca%'
+		AND B.doc_id IS NULL
+		ORDER BY A.DATA DESC,A.CONTROLE,A.ITEM
+	");
 	}
 	
-	echo "<table id=tbordprod>
+	echo "<table id=tbordzebr>
 		<tr>
 			<td width='70px'>DATA</td>
 			<td width='50px'>REGISTRO</td>

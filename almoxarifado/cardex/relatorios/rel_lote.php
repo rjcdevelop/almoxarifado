@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Relatório por Lote</title>
-<link href="../css/estilo.css" rel="stylesheet">
+<link href="/css/estilo.css" rel="stylesheet">
 </head>
 <body>
 

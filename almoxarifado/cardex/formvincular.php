@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Vincular Lote</title>
-<link href="../css/estilo.css" rel="stylesheet">
+<link href="../../css/estilo.css" rel="stylesheet">
 <script>function alert_alterado(){
 alert("Gravado com Sucesso!");
 history.go(-2);
@@ -81,9 +81,7 @@ history.go(-2);
 	<td><input type='text' style='font-size: 10pt; height: 16px; width:300px;' value='$pesquisar' name='pesquisar'/></td>
 	<td><input type='submit' value='Pesquisar'></td>
 	</tr>
-	</form><br><br>";	
-
-
+	</form><br><br>";
 
 
 if($pesquisar != ''){
@@ -95,7 +93,7 @@ if($pesquisar != ''){
 	WHERE
 	A.cod_lote LIKE '%$pesquisar%'");
 	
-	echo "<table id=tbordprod>
+	echo "<table id=tbordzebr>
 	<tr>
 		<td width='100px'>Lote</td>
 		<td width='70px'>O.F.</td>
@@ -128,7 +126,7 @@ if($pesquisar != ''){
 
 if ($acao == "A"){
 		
-	echo "<table id=tbordprod>
+	echo "<table id=tbordzebr>
 	<tr>
 		<td width='120px'>Lote Cadastrado</td>
 		<td width='150px'>Remover Lote</td>

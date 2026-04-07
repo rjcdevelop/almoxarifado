@@ -3,7 +3,7 @@
 
 <head>
 <title>Sistema eFiscal - RJC</title>
-<link href="css/estilo.css" rel="stylesheet">
+<link href="/css/estilo.css" rel="stylesheet">
 </head>
 
 <body>

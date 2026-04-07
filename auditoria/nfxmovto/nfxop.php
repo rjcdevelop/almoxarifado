@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Nota Fiscal x O.P - RJC</title>
-	<link href="../css/estilo.css" rel="stylesheet">
+	<link href="/css/estilo.css" rel="stylesheet">
 	<style>
 		* {
 			margin: 0;

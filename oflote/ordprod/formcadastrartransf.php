@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Vincular Lote x Transferência</title>
-<link href="../css/estilo.css" rel="stylesheet">
+<link href="/css/estilo.css" rel="stylesheet">
 <script>function alert_alterado(){alert("Gravado com Sucesso!");}</script>
 </head>
 
